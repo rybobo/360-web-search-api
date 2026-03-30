@@ -1,11 +1,11 @@
 {
   "name": "360-web-search",
-  "version": "1.1.0",
-  "description": "Real-time Chinese web search powered by 360's search engine API. Purpose-built for LLMs and AI Agents.",
+  "version": "1.2.0",
+  "description": "基于360搜索引擎的实时中文网页搜索工具，专为 LLM 和 AI Agent 设计。",
   "homepage": "https://ai.360.cn",
   "env": {
     "SEARCH_360_API_KEY": {
-      "description": "360 Search API key. Get yours at https://ai.360.cn — Open Platform → API Key Management. New users receive ¥50 free credit on registration.",
+      "description": "360 搜索 API 密钥。访问 https://ai.360.cn 开放平台 → API Key 管理 获取。新注册用户获赠 50 元体验金。",
       "required": true,
       "value": ""
     }
@@ -15,11 +15,11 @@
     "default_count": 5,
     "default_fresh_day": 7,
     "plans": {
-      "aiso-pro": "Smart Search PRO — ¥18/1,000 queries (default)",
-      "iso-max": "Smart Search MAX — ¥30/1,000 queries (deep research)",
-      "aisearch": "AI Search — ¥30/1,000 queries",
-      "aiso-news": "News Smart Search — ¥12/1,000 queries (news & current events)",
-      "image-search": "Image Search — ¥12/1,000 queries (text→image or image→image)"
+      "aiso-pro": "智搜进阶版 PRO — 18 元 / 千次（默认）",
+      "iso-max": "智搜极致版 MAX — 30 元 / 千次（深度研究）",
+      "aisearch": "AI 搜索 — 30 元 / 千次",
+      "aiso-news": "新闻智搜 — 12 元 / 千次（新闻与时事）",
+      "image-search": "图片搜索 — 12 元 / 千次"
     }
   }
 }

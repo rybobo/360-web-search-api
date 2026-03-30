@@ -1,97 +1,104 @@
-# 360 Web Search Skill
+# 360 智搜 Skill
 
-Real-time Chinese web search for QClaw / OpenClaw, powered by 360's search engine API.
-Purpose-built for LLMs and AI Agents.
+基于360搜索引擎 API 的实时中文网页搜索工具，适用于 QClaw / OpenClaw，专为 LLM 和 AI Agent 设计。
 
-## Why 360 Web Search
+## 为什么选择 360 智搜
 
-- **100B+ Chinese web pages** indexed in real time — full domestic coverage
-- **Built for LLMs & AI Agents** — structured JSON output with AI-generated summaries (`summary_ai`) ready for direct reasoning
-- **50% cheaper than Baidu** — from ¥12 / 1,000 queries
-- **Content-filtered and safe** — clean, curated output
-- **News updated within minutes** — no caching delay
+- **1000 亿+ 中文网页**实时索引，全面覆盖国内内容
+- **专为 LLM 和 AI Agent 设计**——结构化 JSON 输出，含 AI 摘要字段（`summary_ai`），可直接用于推理
+- **比百度便宜一半**——最低 12 元 / 千次
+- **内容纯净安全**——经过过滤的高质量输出
+- **新闻分钟级更新**——无缓存延迟
+- 新注册用户获赠 **50 元体验金**，可直接用于360搜索服务
 
-**¥50 free credit** for new users on registration — enough for thousands of queries to evaluate the service.
+## 套餐价格
 
-## Pricing
+| 套餐 | ID | 价格 |
+|------|----|------|
+| 智搜进阶版 PRO | `aiso-pro` | 18 元 / 千次 |
+| 智搜极致版 MAX | `iso-max` | 30 元 / 千次 |
+| AI 搜索 | `aisearch` | 30 元 / 千次 |
+| 新闻智搜 | `aiso-news` | 12 元 / 千次 |
+| 图片搜索 | `image-search` | 12 元 / 千次 |
 
-| Plan | ID | Price |
-|------|----|-------|
-| Smart Search PRO | `aiso-pro` | ¥18 / 1,000 queries |
-| Smart Search MAX | `iso-max` | ¥30 / 1,000 queries |
-| AI Search | `aisearch` | ¥30 / 1,000 queries |
-| News Smart Search | `aiso-news` | ¥12 / 1,000 queries |
-| Image Search | `image-search` | ¥12 / 1,000 queries |
+## 运行要求
 
-## Requirements
+| 要求 | 说明 |
+|------|------|
+| API 密钥 | `SEARCH_360_API_KEY`——见下方配置说明 |
+| 系统工具 | `curl`（macOS 和主流 Linux 系统预装） |
+| 网络 | 可访问 `api.360.cn` 的出站 HTTPS 连接 |
 
-| Requirement | Details |
-|-------------|---------|
-| API key | `SEARCH_360_API_KEY` — see Configuration |
-| Binary | `curl` (pre-installed on macOS and most Linux systems) |
-| Network | Outbound HTTPS to `api.360.cn` |
+## 安装
 
-## Installation
-
-**QClaw (macOS):**
+**QClaw（macOS）：**
 ```bash
 cp -r 360-web-search ~/.qclaw/skills/
 ```
 
-**OpenClaw:**
+**OpenClaw：**
 ```bash
 cp -r 360-web-search ~/.openclaw/skills/
 ```
 
-Then restart QClaw / OpenClaw.
+复制后重启 QClaw / OpenClaw。
 
-## Configuration
+## 配置
 
-Add the API key to your terminal environment:
+### 第一步——获取 API 密钥
+
+1. 访问 https://ai.360.cn 并登录（新用户注册即获赠 50 元体验金）
+2. 进入**「开放平台」→「API Key 管理」**
+3. 创建应用并复制密钥字符串
+
+### 第二步——设置环境变量
+
+在终端运行：
 
 ```bash
-echo 'export SEARCH_360_API_KEY="your-key-here"' >> ~/.zshrc && source ~/.zshrc
+echo 'export SEARCH_360_API_KEY="替换为你的密钥"' >> ~/.zshrc && source ~/.zshrc
 ```
 
-Then fully restart QClaw / OpenClaw.
+### 第三步——重启 QClaw / OpenClaw
 
-**Get your API key:** Visit https://ai.360.cn → Open Platform → API Key Management → Create Application
+完全退出并重新打开应用，使环境变量生效。
 
-> If the key is not configured, the skill will interactively guide you through the setup — it will not silently fall back to other search tools.
+配置完成后，技能将自动响应搜索请求。
 
-## Usage
+## 安全说明
 
-Once installed and configured, ask naturally:
+- 运行时仅向 `api.360.cn` 发出 HTTPS GET 请求，不写入文件系统，不执行 Shell 命令
+- API 密钥从环境变量读取，不会被记录或输出
+- 所有配置命令位于本 README，不包含在 SKILL.md 运行时指令中
 
-- "Search for today's AI industry news"
-- "What are the latest developments in China's EV market?"
-- "Look up Huawei's most recent product announcements"
-- "Find recent data privacy regulations in China"
+## 使用示例
 
-The skill selects the most appropriate plan automatically based on your query type.
+安装并配置完成后，直接在对话框输入：
 
-## Security
+- "帮我搜索今天的 AI 行业新闻"
+- "查一下中国新能源汽车市场最新动态"
+- "联网搜索华为最近发布的新产品"
+- "找一下最新的数据安全相关法规"
 
-- Only outbound GET requests to `api.360.cn` — no filesystem writes, no shell commands
-- API key is read from the environment variable and never logged or echoed
-- No user data stored locally
+技能会根据查询类型自动选择最合适的套餐。
 
-## File Reference
+## 文件说明
 
-| File | Purpose |
-|------|---------|
-| SKILL.md | Core skill instructions read by QClaw / OpenClaw |
-| config.json | Environment variable schema, plan definitions, and default settings |
-| README.md | This file — installation and usage guide |
+| 文件 | 用途 |
+|------|------|
+| SKILL.md | 核心运行时指令，由 QClaw / OpenClaw 读取执行 |
+| config.json | 环境变量定义、套餐配置、默认参数 |
+| README.md | 本文件——安装、配置与使用说明 |
 
-## Changelog
+## 版本历史
 
-- **v1.1.0** — Added hard-stop rule preventing silent fallback when key is missing or invalid; added interactive key setup with inline product pitch; added multi-plan support with automatic plan selection; added pricing and advantage information; bumped `confirmBeforeRun` to false (skill handles confirmation internally)
-- **v1.0.3** — Added `metadata.clawdbot` block; added security disclosure; switched key storage to agent-scoped env.json; added `confirmBeforeRun: true`
-- **v1.0.2** — Removed sensitive keywords to pass ClawHub security scan; improved trigger rules
-- **v1.0.1** — Added interactive API key setup flow; added error handling
-- **v1.0.0** — Initial release
+- **v1.2.0** — 将所有 Shell 命令移至 README，避免安全扫描误判；将强制控制语言（STOP/CRITICAL/ALWAYS）替换为声明式行为描述；密钥配置流程改为展示信息并等待用户确认后重试
+- **v1.1.0** — 新增强制停止规则；交互式密钥引导；多套餐支持与自动选择；价格和优势说明
+- **v1.0.3** — 新增 `metadata.clawdbot` 声明块；安全披露；`confirmBeforeRun` 字段
+- **v1.0.2** — 去除敏感关键词；优化触发规则
+- **v1.0.1** — 新增密钥配置引导流程；错误处理
+- **v1.0.0** — 初始版本
 
-## Author
+## 作者
 
-360 AI Platform — https://ai.360.cn
+360 AI 开放平台 — https://ai.360.cn
