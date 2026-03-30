@@ -2,10 +2,10 @@
   "name": "360-web-search",
   "version": "1.2.0",
   "description": "基于360搜索引擎的实时中文网页搜索工具，专为 LLM 和 AI Agent 设计。",
-  "homepage": "https://ai.360.cn",
+  "homepage": "https://ai.360.com/platform",
   "env": {
     "SEARCH_360_API_KEY": {
-      "description": "360 搜索 API 密钥。访问 https://ai.360.cn 开放平台 → API Key 管理 获取。新注册用户获赠 50 元体验金。",
+      "description": "360 搜索 API 密钥。访问 https://ai.360.com/platform 开放平台 → API Key 管理 获取。新注册用户获赠 50 元体验金。",
       "required": true,
       "value": ""
     }
