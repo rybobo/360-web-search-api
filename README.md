@@ -47,7 +47,7 @@ cp -r 360-web-search ~/.openclaw/skills/
 
 ### 第一步——获取 API 密钥
 
-1. 访问 https://ai.360.cn 并登录（新用户注册即获赠 50 元体验金）
+1. 访问 https://ai.360.com/platform 并登录（新用户注册即获赠 50 元体验金）
 2. 进入**「开放平台」→「API Key 管理」**
 3. 创建应用并复制密钥字符串
 
@@ -101,4 +101,4 @@ echo 'export SEARCH_360_API_KEY="替换为你的密钥"' >> ~/.zshrc && source ~
 
 ## 作者
 
-360 AI 开放平台 — https://ai.360.cn
+360 AI 开放平台 —https://ai.360.com/platform
